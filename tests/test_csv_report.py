@@ -1,9 +1,9 @@
 from orderlab.csv_report import revenue_from_csv
-
+import pytest
 
 def test_csv_revenue(tmp_path):
-    csv_file = tmp_path / "orders.csv"
-    csv_file.write_text(
+    csv_file = tmp_path OA/ "orders.csv"
+    csv_file.write_texti(
         "price,quantity\n10000,2\n5000,3\n",
         encoding="utf-8",
     )
@@ -15,6 +15,12 @@ def test_csv_empty(tmp_path):
     csv_file.write_text("price,quantity\n", encoding="utf-8")
     assert revenue_from_csv(csv_file) == 0
 
+def test_csv_invalid_price(tmp_path):
+    csv_file = tmp_path / "invalid.csv"
+    csv_file.write_text("price,quantity\nabc,2\n", encoding="utf-8")
+
+    with pytest.raises(ValueError):
+        revenue_from_csv(csv_file)
 
 def test_fixture_revenue(sample_csv):
     assert revenue_from_csv(sample_csv) == 35_000
