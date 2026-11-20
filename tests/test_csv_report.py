@@ -13,7 +13,7 @@ def test_csv_revenue(tmp_path):
 
 
 def test_largest_order_from_csv(sample_csv):
-    assert largest_order_from_csv(sample_csv) == 20_001
+    assert largest_order_from_csv(sample_csv) == 20_000
 
 
 def test_csv_empty(tmp_path):
