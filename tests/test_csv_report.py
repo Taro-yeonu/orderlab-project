@@ -1,4 +1,5 @@
 import pytest
+
 from orderlab.csv_report import revenue_from_csv
 
 
