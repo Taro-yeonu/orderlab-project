@@ -1,6 +1,6 @@
 import pytest
 
-from orderlab.csv_report import revenue_from_csv
+from orderlab.csv_report import largest_order_from_csv, revenue_from_csv
 
 
 def test_csv_revenue(tmp_path):
@@ -10,6 +10,10 @@ def test_csv_revenue(tmp_path):
         encoding="utf-8",
     )
     assert revenue_from_csv(csv_file) == 35_000
+
+
+def test_largest_order_from_csv(sample_csv):
+    assert largest_order_from_csv(sample_csv) == 20_000
 
 
 def test_csv_empty(tmp_path):
